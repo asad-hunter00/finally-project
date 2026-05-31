@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Movie Database Support</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <a href="#" class="logo-img" onclick="showForum()">
+      <span class="logo-tm">TM</span><span class="logo-db">DB</span>
+    </a>
+  </div>
+
+  <div class="sidebar-auth">
+    <a href="/login" class="auth-link">Login</a>
+    <a href="/signup" class="auth-link">Sign Up</a>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-heading">Categories</div>
+    <button class="nav-link active" id="nav-general" onclick="setNav('nav-general');showForum()">General</button>
+    <button class="nav-link" id="nav-website" onclick="setNav('nav-website');showForum()">Website Support</button>
+    <button class="nav-link" id="nav-api" onclick="setNav('nav-api');showForum()">API Support</button>
+    <button class="nav-link" id="nav-content" onclick="setNav('nav-content');showForum()">Content Issues</button>
+  </div>
+
+  <div class="sidebar-footer">
+    <button class="kbd-btn" onclick="openKbd()">Keyboard Shortcuts</button>
+  </div>
+</aside>
+
+<main class="main">
+
+  <div class="search-bar">
+    <div class="search-wrap">
+      <input id="searchInput" placeholder="Search the forums..." onkeydown="if(event.key==='Enter')doSearch()" />
+    </div>
+    <a href="#" class="adv-link" onclick="openAdv();return false">Advanced Search</a>
+    <button class="search-go" onclick="doSearch()">Search</button>
+  </div>
+
+  <div class="page" id="pageContent"></div>
+</main>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeOverlay()">
+  <div class="modal">
+    <div class="modal-hd">
+      <div>
+        <div class="modal-bc">Support → General</div>
+        <div class="modal-title" id="mTitle"></div>
+        <div class="modal-date" id="mDate"></div>
+      </div>
+      <button class="modal-x" onclick="closeOverlay()">×</button>
+    </div>
+    <div class="modal-bd" id="mBody"></div>
+  </div>
+</div>
+
+<div class="kbd-overlay" id="kbdOverlay" onclick="if(event.target===this)closeKbd()">
+  <div class="kbd-modal">
+    <div class="kbd-hd">
+      <h2>Keyboard Shortcuts</h2>
+      <button class="modal-x" onclick="closeKbd()">×</button>
+    </div>
+    <div class="kbd-bd">
+      <div class="kbd-section">
+        <h3>Global</h3>
+        <div class="kbd-row"><kbd>s</kbd><span class="kbd-desc">focus the search bar</span></div>
+        <div class="kbd-row"><kbd>p</kbd><span class="kbd-desc">open profile menu</span></div>
+        <div class="kbd-row"><kbd>esc</kbd><span class="kbd-desc">close an open window</span></div>
+        <div class="kbd-row"><kbd>?</kbd><span class="kbd-desc">open keyboard shortcut window</span></div>
+      </div>
+      <div class="kbd-section">
+        <h3>On all edit pages</h3>
+        <div class="kbd-row"><kbd>t</kbd><span class="kbd-desc">open translation selector</span></div>
+        <div class="kbd-row"><kbd>ctrl</kbd><span class="kbd-plus"> + </span><kbd>s</kbd><span class="kbd-desc">submit form</span></div>
+      </div>
+      <div class="kbd-section">
+        <h3>On media pages</h3>
+        <div class="kbd-row"><kbd>b</kbd><span class="kbd-desc">go back (or to parent when applicable)</span></div>
+        <div class="kbd-row"><kbd>e</kbd><span class="kbd-desc">go to edit page</span></div>
+      </div>
+      <div class="kbd-section">
+        <h3>On discussion pages</h3>
+        <div class="kbd-row"><kbd>n</kbd><span class="kbd-desc">create new discussion</span></div>
+        <div class="kbd-row"><kbd>w</kbd><span class="kbd-desc">toggle watching status</span></div>
+        <div class="kbd-row"><kbd>p</kbd><span class="kbd-desc">toggle public/private</span></div>
+        <div class="kbd-row"><kbd>c</kbd><span class="kbd-desc">toggle close/open</span></div>
+        <div class="kbd-row"><kbd>a</kbd><span class="kbd-desc">open activity</span></div>
+        <div class="kbd-row"><kbd>r</kbd><span class="kbd-desc">reply to discussion</span></div>
+        <div class="kbd-row"><kbd>l</kbd><span class="kbd-desc">go to last reply</span></div>
+        <div class="kbd-row"><kbd>ctrl</kbd><span class="kbd-plus"> + </span><kbd>enter</kbd><span class="kbd-desc">submit your message</span></div>
+        <div class="kbd-row"><kbd>→</kbd><span class="kbd-desc">(right arrow) next page</span></div>
+        <div class="kbd-row"><kbd>←</kbd><span class="kbd-desc">(left arrow) previous page</span></div>
+      </div>
+      <div class="kbd-section">
+        <h3>On TV season pages</h3>
+        <div class="kbd-row"><kbd>→</kbd><span class="kbd-desc">(right arrow) go to next season</span></div>
+        <div class="kbd-row"><kbd>←</kbd><span class="kbd-desc">(left arrow) go to previous season</span></div>
+      </div>
+      <div class="kbd-section">
+        <h3>On TV episode pages</h3>
+        <div class="kbd-row"><kbd>→</kbd><span class="kbd-desc">(right arrow) go to next episode</span></div>
+        <div class="kbd-row"><kbd>←</kbd><span class="kbd-desc">(left arrow) go to previous episode</span></div>
+      </div>
+      <div class="kbd-section">
+        <h3>On all image pages</h3>
+        <div class="kbd-row"><kbd>a</kbd><span class="kbd-desc">open add image window</span></div>
+      </div>
+    </div>
+    <div class="kbd-footer">
+      <label><input type="checkbox" id="kbdEnabled" checked> Enable Keyboard Shortcuts</label>
+    </div>
+  </div>
+</div>
+
+<div class="adv-overlay" id="advOverlay" onclick="if(event.target===this)closeAdv()">
+  <div class="adv-modal">
+    <div class="adv-hd">
+      <h2>Advanced Search</h2>
+      <button class="modal-x" onclick="closeAdv()">×</button>
+    </div>
+    <div class="adv-bd">
+      <div class="adv-field"><label>Title / Keyword</label><input id="advQ" placeholder="e.g. Inception…" /></div>
+      <div class="adv-2col">
+        <div class="adv-field"><label>Type</label>
+          <select id="advType"><option value="movie">Movie</option><option value="tv">TV Show</option><option value="person">Person</option></select>
+        </div>
+        <div class="adv-field"><label>Year</label><input id="advYear" type="number" placeholder="2024" /></div>
+      </div>
+      <div class="adv-2col">
+        <div class="adv-field"><label>Min Rating</label><input id="advMin" type="number" step="0.1" min="0" max="10" placeholder="0–10" /></div>
+        <div class="adv-field"><label>Language</label>
+          <select id="advLang">
+            <option value="">Any</option>
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+            <option value="es">Spanish</option>
+            <option value="de">German</option>
+            <option value="zh">Chinese</option>
+            <option value="ar">Arabic</option>
+          </select>
+        </div>
+      </div>
+      <button class="adv-go" onclick="runAdv()">Search</button>
+    </div>
+  </div>
+</div>
+
+<script src="./main.js"></script>
+</body>
+</html>
