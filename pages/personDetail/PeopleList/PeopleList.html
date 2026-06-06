@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Popular People</title>
+
+    <link rel="stylesheet" href="./PeopleList.css" />
+  </head>
+  <body>
+    <header class="tmdb-header">
+      <div class="header-container">
+        <div class="nav-left">
+          <a href="#" class="logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9ghFe_m2puuK5MT1i__4bSjHf3gNjLQZAGg&s" alt="" height="66px" style="max-width: 240px; width: 100%;">
+              <path
+                d="M14.2 0H0v20h14.2c3.2 0 5.7-.8 7.6-2.4 1.9-1.6 2.8-3.9 2.8-6.9 0-3.2-.9-5.6-2.8-7.2-1.9-1.7-4.4-2.5-7.6-2.5zm3 10.7c0 2-.5 3.5-1.5 4.4-1 .9-2.5 1.4-4.5 1.4H4.7V3.5h6.5c2 0 3.5.5 4.5 1.4 1 .9 1.5 2.5 1.5 4.5zM41.8 0H33l-5.4 13-5.4-13h-8.8v20h4.7V5.5l5.5 12.8h8l5.5-12.8V20h4.7V0zm22.4 0H52.5c-3.1 0-5.6.8-7.5 2.5-1.9 1.7-2.8 4-2.8 7.2 0 3.1.9 5.5 2.8 7.1s4.4 2.4 7.5 2.4h11.7V0zm-4.7 15.5h-7c-1.9 0-3.3-.4-4.2-1.3-.9-.9-1.4-2.3-1.4-4.2s.5-3.3 1.4-4.2c.9-.9 2.3-1.3 4.2-1.3h7v11zM85.4 0H71.2v20h14.2c3.2 0 5.7-.8 7.6-2.4 1.9-1.6 2.8-3.9 2.8-6.9 0-3.2-.9-5.6-2.8-7.2-1.9-1.7-4.4-2.5-7.6-2.5zm3 10.7c0 2-.5 3.5-1.5 4.4-1 .9-2.5 1.4-4.5 1.4h-6.7V3.5h6.5c2 0 3.5.5 4.5 1.4 1 .9 1.5 2.5 1.5 4.5z"
+                fill="url(#paint0_linear)"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear"
+                  x1="0"
+                  y1="10"
+                  x2="90"
+                  y2="10"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#90cea1" />
+                  <stop offset="1" stop-color="#01b4e4" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </a>
+
+          <nav class="main-menu">
+            <div class="menu-item">
+              Movies
+              <div class="dropdown">
+                <a href="#">Popular</a>
+                <a href="#">Now Playing</a>
+                <a href="#">Upcoming</a>
+                <a href="#">Top Rated</a>
+              </div>
+            </div>
+            <div class="menu-item">
+              TV Shows
+              <div class="dropdown">
+                <a href="#">Popular</a>
+                <a href="#">Airing Today</a>
+                <a href="#">On TV</a>
+                <a href="#">Top Rated</a>
+              </div>
+            </div>
+            <div class="menu-item">
+              People
+              <div class="dropdown">
+                <a href="#" class="active">Popular People</a>
+              </div>
+            </div>
+            <div class="menu-item">
+              Awards
+              <div class="dropdown">
+                <a href="#">Oscars</a>
+                <a href="#">Emmys</a>
+                <a href="#">Golden Globes</a>
+              </div>
+            </div>
+            <div class="menu-item">
+              More
+              <div class="dropdown">
+                <a href="#">Discussion Boards</a>
+                <a href="#">Leaderboard</a>
+                <a href="#">Support</a>
+                <a href="#">API</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <div class="nav-right">
+          <a href="#" class="action-icon btn-add">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path
+                d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"
+              />
+            </svg>
+          </a>
+          <div class="lang-selector">EN</div>
+          <a href="#" class="nav-link">Login</a>
+          <a href="#" class="nav-link">Join TMDB</a>
+          <a href="#" class="action-icon btn-search">
+            <svg
+              width="29"
+              height="29"
+              viewBox="0 0 29 29"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="4"
+              stroke-linecap="round"
+            >
+              <circle cx="12" cy="12" r="8" />
+              <line x1="18" y1="18" x2="25" y2="25" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <h1>Popular People</h1>
+
+      <div id="people-grid"></div>
+
+      <div id="pagination"></div>
+    </main>
+
+    <script src="./PeopleList.js"></script>
+  </body>
+</html>
