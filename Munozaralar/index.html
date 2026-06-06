@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TMDB - Let's Chat</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a href="#" class="logo-home">
+        <div class="logo" onclick="goHome()">
+          <div class="logo-text">
+            <div class="logo-row">
+              <span class="logo-tm">TM</span>
+              <span class="logo-pill logo-pill-top"></span>
+            </div>
+            <div class="logo-db-row">
+              <span class="logo-pill logo-pill-bottom"></span>
+              <span class="logo-db">DB</span>
+            </div>
+          </div>
+        </div>
+      </a>
+      <div class="sidebar-links">
+        <a class="sidebar-link" href="#">kirish</a>
+        <a class="sidebar-link" href="#">ro'yxatdan o'ting</a>
+        <hr class="sidebar-divider" />
+        <span class="sidebar-keyboard">Keyboard Shortcuts</span>
+      </div>
+    </aside>
+    <div class="page active" id="page-home">
+      <main class="main">
+        <h1 class="page-title">Let's Chat</h1>
+        <div class="cards-grid">
+          <button class="card card-movies" onclick="goChat('movies')">
+            <div class="card-title">Recent Movie Discussions</div>
+            <div class="card-meta">
+              <div class="card-posts">
+                <span class="card-count">19,150</span>
+                <span class="card-label">posts</span>
+              </div>
+              <div class="card-last">
+                <span class="card-last-title"
+                  >I thought this sequel was...</span
+                >
+                <span class="card-last-time">last post about 7 hours ago</span>
+              </div>
+            </div>
+          </button>
+          <button class="card card-tv" onclick="goChat('tv')">
+            <div class="card-title">Recent TV Discussions</div>
+            <div class="card-meta">
+              <div class="card-posts">
+                <span class="card-count">21,158</span>
+                <span class="card-label">posts</span>
+              </div>
+              <div class="card-last">
+                <span class="card-last-title">May Episode Counts</span>
+                <span class="card-last-time">last post about 2 hours ago</span>
+              </div>
+            </div>
+          </button>
+          <button class="card card-celebrity" onclick="goChat('celebrity')">
+            <div class="card-title">Recent Celebrity Discussions</div>
+            <div class="card-meta">
+              <div class="card-posts">
+                <span class="card-count">8,313</span>
+                <span class="card-label">posts</span>
+              </div>
+              <div class="card-last">
+                <span class="card-last-title">"Dance Off"</span>
+                <span class="card-last-time">last post about 10 hours ago</span>
+              </div>
+            </div>
+          </button>
+        </div>
+      </main>
+    </div>
+    <div class="page" id="page-chat">
+      <div class="chat-page">
+        <div class="chat-header">
+          <button class="back-btn" onclick="goHome()">&#8592;</button>
+          <div class="chat-header-info">
+            <div class="chat-header-title" id="chat-title"></div>
+            <div class="chat-header-sub" id="chat-sub"></div>
+          </div>
+          <div class="chat-header-badge" id="chat-badge"></div>
+        </div>
+        <div class="chat-body" id="chat-body"></div>
+        <div class="chat-footer">
+          <input
+            class="chat-input"
+            id="chat-input"
+            type="text"
+            placeholder="Xabar yozing..."
+          />
+          <button class="send-btn" onclick="sendMessage()">&#10148;</button>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
